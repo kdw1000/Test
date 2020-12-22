@@ -14,6 +14,6 @@ Der gesamte Update-Prozess wurde für den vollautomatischen Betrieb entwickelt u
 
 **Device:** Das eigentliche Zielsystem für den Update. Es ist per CAN, Modbus (RTU, TCP), Nahbereichs-Funkschnittstelle usw. mit dem RMG/941 verbunden. Über den RMG/941-SDU-Agent wurde das Gateway an das jeweilige Update-Protokoll der Device angepasst ...
 
-<a href="https://raw.githubusercontent.com/kdw1000/Test/master/_161120.ipynb">
+<a href="https://github.com/kdw1000/Test/blob/master/_161120.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
