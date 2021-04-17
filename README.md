@@ -40,6 +40,23 @@ Insgesamt liefert der SFS in diesem Beispiel-JSON-Objekt die aktuellen Messwerte
 
 Der Dateneingang des Flows erhält die SFS-Daten von einem MQTT Broker (MQTT Subscribe). Danach wird das per MQTT erhaltende String-Objekt in ein reines JSON-Objekt umgewandelt und an den Function Node „Measurement Extraction“ weitergeleitet.    
 
+```javascript
+var d = msg.payload.ssvSensorBox.temperature;
+d = d.toFixed(1);
+var msg1 = {payload:d};
+
+d = msg.payload.ssvSensorBox.pressure;
+d = d.toFixed(1);
+var msg2 = {payload:d};
+
+d = msg.payload.ssvSensorBox.humidity;
+d = d.toFixed(1);
+var msg3 = {payload:d};
+
+return [msg1, msg2, msg3];
+```
+Der JavaScript-Code des Function Node extrahiert die Messwerte für Temperatur, Luftdruck und relative Luftfeuchte aus dem JSON-Objekt, begrenzt die Zahlenlänge auf eine Nachkommastelle und gibt die drei Sensormesswerte jeweils an einem eigenen Ausgang aus.
+
 <a href="https://github.com/kdw1000/Test/blob/master/_161120.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
