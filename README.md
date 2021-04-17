@@ -2,7 +2,7 @@
 
 Eine SDU-Anwendung soll eine Komponente (Device) hinter dem RMG/941 über eine IoT-Anbindung mit Software-, Konfigurations- und Machine-Learning-Modell-Updates versorgen. Dabei liegt der Schwerpunkt, neben der Remote-Update-Funktion, im Bereich der IT-Sicherheit. Um eine dem Stand der Technik entsprechende Sicherheit zu gewährleisten, nutzt SDU eine Public-Key-Infrastruktur (PKI) für digitale Signaturen mit privaten und öffentlichen Schlüsseln, Zertifikaten und einer Sperrliste (Blacklist).
 
-![Übersicht: Zusammenhänge SDU ](https://ssv-comm.de/forum/bilder/sdu_141220.png) 
+![Übersicht: Zusammenhänge SDU](https://ssv-comm.de/forum/bilder/sdu_141220.png) 
 
 Der gesamte Update-Prozess wurde für den vollautomatischen Betrieb entwickelt und lässt sich in Bezug auf die Device-Anzahl nahezu beliebig skalieren. Die Abbildung zeigt die wichtigsten SDU-Funktionsbausteine.
 
@@ -14,9 +14,9 @@ Der gesamte Update-Prozess wurde für den vollautomatischen Betrieb entwickelt u
 
 **Device:** Das eigentliche Zielsystem für den Update. Es ist per CAN, Modbus (RTU, TCP), Nahbereichs-Funkschnittstelle usw. mit dem RMG/941 verbunden. Über den RMG/941-SDU-Agent wurde das Gateway an das jeweilige Update-Protokoll der Device angepasst.
 
-### Der Umgang mit SSV/SFS-Daten
+### Wie extrahiert man Messwerte aus SSV/SFS-Daten?
 
-Die Daten eines Smart Factory Sensors (SFS) werden vielfach als JSON-Objekt verschickt. Für die weitere Verarbeitung der jeweils benötigten Daten aus diesen Objekten extrahiert werden. Der folgende Textblock zeigt das JSON-Objekt eines SFS mit drei Sensorelementen als Beispiel:
+Die Daten eines Smart Factory Sensors (SFS) werden vielfach als JSON-Objekt verschickt. Für die weitere Verarbeitung müssen die jeweils benötigten Daten aus diesen Objekten extrahiert werden. Der folgende Textblock zeigt als Beispiel das JSON-Objekt eines SFS mit drei Sensorelementen:
 
 ```javascript
 {
@@ -34,7 +34,9 @@ Die Daten eines Smart Factory Sensors (SFS) werden vielfach als JSON-Objekt vers
 }
 ```
 
-Insgesamt liefert der SFS die aktuellen Messwerte für Temperatur, Luftdruck und relative Luftfeuchte. Der hier abgebildete Node-RED-Flow liefert ein Beispiel, wie die JSON-Daten auseinandergenommen werden, um die Rohdaten der einzelnen Sensorelemente gemäß den jeweiligen Anforderungen zu nutzen. 
+Insgesamt liefert der SFS in diesem Beispiel-JSON-Objekt die aktuellen Messwerte für Temperatur, Luftdruck und relative Luftfeuchte. Der hier abgebildete Node-RED-Flow verdeutlicht, wie die JSON-Daten auseinandergenommen werden, um die Rohdaten der einzelnen Sensorelemente gemäß den jeweiligen Anforderungen zu nutzen. 
+
+![Node-RED-Flow](https://ssv-comm.de/forum/bilder/nr_170421.png)
 
 <a href="https://github.com/kdw1000/Test/blob/master/_161120.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
