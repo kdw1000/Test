@@ -14,6 +14,26 @@ Der gesamte Update-Prozess wurde für den vollautomatischen Betrieb entwickelt u
 
 **Device:** Das eigentliche Zielsystem für den Update. Es ist per CAN, Modbus (RTU, TCP), Nahbereichs-Funkschnittstelle usw. mit dem RMG/941 verbunden. Über den RMG/941-SDU-Agent wurde das Gateway an das jeweilige Update-Protokoll der Device angepasst.
 
+### Der Umgang mit SSV/SFS-Daten
+
+Die Daten eines Smart Factory Sensors (SFS) werden vielfach als JSON-Objekt verschickt. Für die weitere Verarbeitung der jeweils benötigten Daten aus diesen Objekten extrahiert werden. Der folgende Textblock zeigt das JSON-Objekt eines SFS mit drei Sensorelementen als Beispiel:
+
+'<{
+  "gw" : "94:54:93:56:57:8c",
+  "address" : "bc:dd:c2:c4:7c:1e",
+  "name" : "SSV-SFS",
+  "rssi" : -47,
+  "ts" : 1618660439,
+  "type" : "ssvSensorBox",
+  "ssvSensorBox" : {
+    "temperature" : 23.280000686645508,
+    "pressure" : 101.8153076171875,
+    "humidity" : 34.5595703125
+  }
+}>'
+
+Insgesamt liefert der SFS die aktuellen Messwerte für Temperatur, Luftdruck und relative Luftfeuchte. Der hier abgebildete Node-RED-Flow liefert ein Beispiel, wie die JSON-Daten auseinandergenommen werden, um die Rohdaten der einzelnen Sensorelemente gemäß den jeweiligen Anforderungen zu nutzen. 
+
 <a href="https://github.com/kdw1000/Test/blob/master/_161120.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
