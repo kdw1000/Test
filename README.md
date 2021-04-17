@@ -38,6 +38,8 @@ Insgesamt liefert der SFS in diesem Beispiel-JSON-Objekt die aktuellen Messwerte
 
 ![Node-RED-Flow](https://ssv-comm.de/forum/bilder/nr_170421.png)
 
+Der Dateneingang des Flows erhält die SFS-Daten von einem MQTT Broker (MQTT Subscribe). Danach wird das per MQTT erhaltende String-Objekt in ein reines JSON-Objekt umgewandelt und an den Function Node „Measurement Extraction“ weitergeleitet.    
+
 <a href="https://github.com/kdw1000/Test/blob/master/_161120.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
