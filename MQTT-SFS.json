@@ -1,0 +1,120 @@
+[
+  {
+    "id": "13a5ec26.3e0454",
+    "type": "mqtt in",
+    "z": "8e0226dd.f036e8",
+    "name": "test.mosquitto.org",
+    "topic": "/xxx",
+    "qos": "2",
+    "broker": "e94f8c27.d5154",
+    "x": 110,
+    "y": 60,
+    "wires": [
+      [
+        "f036f2a0.a64f8"
+      ]
+    ]
+  },
+  {
+    "id": "12035f5a.9e6661",
+    "type": "debug",
+    "z": "8e0226dd.f036e8",
+    "name": "Temperature",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "x": 650,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "fba6558f.2f04b8",
+    "type": "function",
+    "z": "8e0226dd.f036e8",
+    "name": "Measurement Extraction",
+    "func": "var d = msg.payload.ssvSensorBox.temperature;\nd = d.toFixed(1);\nvar msg1 = {payload:d};\n\nd = msg.payload.ssvSensorBox.pressure;\nd = d.toFixed(1);\nvar msg2 = {payload:d};\n\nd = msg.payload.ssvSensorBox.humidity;\nd = d.toFixed(1);\nvar msg3 = {payload:d};\n\nreturn [msg1, msg2, msg3];",
+    "outputs": 3,
+    "noerr": 0,
+    "x": 370,
+    "y": 180,
+    "wires": [
+      [
+        "12035f5a.9e6661"
+      ],
+      [
+        "5afd9655.0d6e68"
+      ],
+      [
+        "b799c7a0.ce26e8"
+      ]
+    ]
+  },
+  {
+    "id": "f036f2a0.a64f8",
+    "type": "json",
+    "z": "8e0226dd.f036e8",
+    "name": "JSON: String_to_Object",
+    "property": "payload",
+    "action": "",
+    "pretty": false,
+    "x": 370,
+    "y": 60,
+    "wires": [
+      [
+        "fba6558f.2f04b8"
+      ]
+    ]
+  },
+  {
+    "id": "5afd9655.0d6e68",
+    "type": "debug",
+    "z": "8e0226dd.f036e8",
+    "name": "Pressure",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "x": 640,
+    "y": 120,
+    "wires": []
+  },
+  {
+    "id": "b799c7a0.ce26e8",
+    "type": "debug",
+    "z": "8e0226dd.f036e8",
+    "name": "Humidity",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "x": 640,
+    "y": 180,
+    "wires": []
+  },
+  {
+    "id": "e94f8c27.d5154",
+    "type": "mqtt-broker",
+    "z": "",
+    "name": "test.mosquitto.org",
+    "broker": "test.mosquitto.org",
+    "port": "1883",
+    "clientid": "",
+    "usetls": false,
+    "compatmode": true,
+    "keepalive": "60",
+    "cleansession": true,
+    "birthTopic": "",
+    "birthQos": "0",
+    "birthPayload": "",
+    "closeTopic": "",
+    "closeQos": "0",
+    "closePayload": "",
+    "willTopic": "",
+    "willQos": "0",
+    "willPayload": ""
+  }
+]
