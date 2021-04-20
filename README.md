@@ -57,9 +57,9 @@ return [msg1, msg2, msg3];
 ```
 Der JavaScript-Code des Function Node extrahiert die Messwerte für Temperatur, Luftdruck und relative Luftfeuchte aus dem JSON-Objekt, begrenzt die Zahlenlänge auf eine Nachkommastelle und stellt die drei Sensormesswerte jeweils an einem eigenen Ausgang zur Verfügung. Dort übernimmt sie in diesem Beispiel ein Debug Node und erzeugt eine Messwertausgabe im Debug Sidebar.
 
-### Wie funktioniert der virtuelle Hands-on in einem SSV-SFS-Webinar?
+### Wie funktioniert der virtuelle Hands-on in einem SSV-Sensorik-Webinar?
 
-Die Sensoren und Teilnehmer befinde sich an unterschiedlichen Standorten (Sensoren z. B. am Arbeitsplatz eines SSV-Mitarbeiters in Hannover, Teilnehmer an belibeigen Orten irgendwo auf der Welt). 
+Die Sensoren und Teilnehmer befinden sich an unterschiedlichen Standorten (Sensoren z. B. am Arbeitsplatz eines SSV-Mitarbeiters in Hannover, Teilnehmer an belibeigen Orten irgendwo auf der Welt). 
 
 ![Node-RED-Flow](https://ssv-comm.de/forum/bilder/co_200421.png)
 
