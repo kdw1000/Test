@@ -59,9 +59,13 @@ Der JavaScript-Code des Function Node extrahiert die Messwerte für Temperatur, 
 
 ### Wie funktioniert der virtuelle Hands-on in einem SSV-Sensorik-Webinar?
 
-Die Sensoren und Teilnehmer befinden sich an unterschiedlichen Standorten (Sensoren z. B. am Arbeitsplatz eines SSV-Mitarbeiters in Hannover, Teilnehmer an belibeigen Orten irgendwo auf der Welt). 
+In diesen Webinaren lernen die Teilnehmer in der Regel unterschiedliche Sensordatenformate für Digitalisierungsaufgaben (z. B. JSON, CSV/TSV, Merkmalsvektoren) plus einige Erweiterungen (ISO 8601-Zeitstempel für Zeitreihendaten, Sensorfusion usw.) kennen. Aber auch die Sensordatenvorverarbeitung (z. B. Z-Score-Normalisierung, Detrending, FFT) und Datenanalysen per Machine Learning kommen zur Sprache.
 
+In dem Hands-on eines solchen Webinars geht es darum, den Teilnehmern unter fachlicher Anleitung die Möglichkeit zu geben, mit echten Sensordaten zu arbeiten und einige zuvor erlernte Dinge selbst auszuprobieren. Die Sensoren und Teilnehmer befinden sich dabei allerdings an unterschiedlichen Standorten (die Sensoren z. B. am Arbeitsplatz eines SSV-Mitarbeiters in Hannover, die Teilnehmer an beliebigen Orten irgendwo auf der Welt). 
+ 
 ![Node-RED-Flow](https://ssv-comm.de/forum/bilder/co_200421.png)
+
+Insofern werden die Sensordaten für die Übungen in Echtzeit an einen MQTT Broker im Internet übermittelt. Dort kann jeder Teilnehmer die Daten mit einem MQTT-Subscribe abonnieren und auf dem eigenen Rechner weiterbearbeiten. Dafür benötigt der Teilnehmer lediglich ein kostenloses Google-Konto mit einem Webbrowser-Zugang zu Google Colaboratory  (Colab). Die für die Übungen erforderlichen Python-Codebausteine werden jeweils vom SSV-Trainer zur Verfügung gestellt.
 
 <a href="https://github.com/kdw1000/Test/blob/master/_161120.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
