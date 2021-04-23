@@ -67,6 +67,10 @@ In dem Hands-on eines solchen Webinars geht es darum, den Teilnehmern unter fach
 
 Insofern werden die Sensordaten für die Übungen in Echtzeit an einen MQTT Broker im Internet übermittelt. Dort kann jeder Teilnehmer die Daten mit einem MQTT-Subscribe abonnieren und auf dem eigenen Rechner weiterbearbeiten. Dafür benötigt der Teilnehmer lediglich ein kostenloses Google-Konto mit einem Webbrowser-Zugang zu Google Colaboratory  (Colab). Die für die Übungen erforderlichen Python-Codebausteine werden jeweils vom SSV-Trainer zur Verfügung gestellt.
 
+### Was ist ein PyDSlog-Docker?
+
+![Node-RED-Flow](https://ssv-comm.de/forum/bilder/py_230421.png) 
+
 <a href="https://github.com/kdw1000/Test/blob/master/_161120.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
