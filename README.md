@@ -69,7 +69,11 @@ Insofern werden die Sensordaten für die Übungen in Echtzeit an einen MQTT Brok
 
 ### Was ist ein PyDSlog-Docker?
 
+Der Maschinensensor MLS/160A liefert ein relativ komplexes Datenbild mit verschiedenen Kanälen (bis zu sechs Achsen mit Beschleunigung und Winkelgeschwindigkeit) sowie einstellbarer Abtastfrequenz innerhalb eines definierbaren Zeitfensters. Als Zubehör ist nun ein MLS/160A-Support Docker verfügbar.
+
 ![Node-RED-Flow](https://ssv-comm.de/forum/bilder/py_230421.png) 
+
+Mit diesen PyDSlog Docker wollen wir die Datenqualitätsanforderungen einer Machine-Learning-Applikation so präzise wie möglich umsetzen und Standardschnittstellen zu anderen Anwendungen schaffen. Der Docker unterstützt nicht nur die Sensorkonfiguration. Er dient auch zum sicheren Remote Update der MLS/160A-Firmware. Ein PyDSlog Docker ist auf einem SSV-Gateway und auf anderen geeigneten Plattformen in der Edge einsetzbar.
 
 <a href="https://github.com/kdw1000/Test/blob/master/_161120.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
