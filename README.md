@@ -69,7 +69,7 @@ Insofern werden die Sensordaten für die Übungen in Echtzeit an einen MQTT Brok
 
 ### Virtueller Hands-on am 06.05.2021: Code-Beispiele für Colob
 
-Der Hands-on gehört zum Webinar "IoT-Funksensorik für Machine-Learning-Anwendungen". Die Teilnehmer können per Colab live MQTT-Sensordaten empfangen, anzeigen, in einer Zeitreihen-CSV-Datei speichern und visualisieren. Des Weiteren wird ein sehr einfaches Regressionsmodell per TensorFlow erzeugt.  
+Der Hands-on gehört zum Webinar "IoT-Funksensorik für Machine-Learning-Anwendungen". Die Teilnehmer können per Colab live MQTT-Sensordaten empfangen, anzeigen, in einer Zeitreihen-CSV-Datei speichern und visualisieren. Des Weiteren wird ein einfaches Regressionsmodell per TensorFlow erzeugt.  
 
 **1) MQTT-Bibliothek in Google-Colab installieren**
 
