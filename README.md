@@ -77,13 +77,13 @@ Mit diesen PyDSlog Docker wollen wir die Datenqualitätsanforderungen einer Mach
 
 ### Virtueller Hands-on am 06.05.2021: Code-Beispiele für Colob
 
-1) MQTT-Bibliothek in Colab installieren
+**1) MQTT-Bibliothek in Colab installieren**
 
 ```python
 !pip install paho-mqtt
 ```
 
-2) Sensordaten per MQTT empfangen uns ausgeben
+**2) Sensordaten per MQTT empfangen uns ausgeben**
 
 ```python
 import paho.mqtt.client as mqtt
@@ -105,7 +105,7 @@ client.connect("test.mosquitto.org", 1883, 60)
 client.loop_forever()
 ```
 
-3) Sensordaten per MQTT empfangen und in CSV-Datei speichern
+**3) Sensordaten per MQTT empfangen und in CSV-Datei speichern**
 
 ```python
 import paho.mqtt.client as mqtt 
@@ -149,7 +149,7 @@ client.connect("test.mosquitto.org", 1883, 60)
 client.loop_forever()
 ```
 
-4) CSV-Datei mit Sensordaten auswerten
+**4) CSV-Datei mit Sensordaten auswerten**
 
 ```python
 import pandas as pd
