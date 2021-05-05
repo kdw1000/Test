@@ -75,6 +75,116 @@ Der Maschinensensor MLS/160A liefert ein relativ komplexes Datenbild mit verschi
 
 Mit diesen PyDSlog Docker wollen wir die Datenqualitätsanforderungen einer Machine-Learning-Applikation so präzise wie möglich umsetzen und Standardschnittstellen zu anderen Anwendungen schaffen. Der Docker unterstützt nicht nur die Sensorkonfiguration. Er dient auch zum sicheren Remote Update der MLS/160A-Firmware. Ein PyDSlog Docker ist auf einem SSV-Gateway und auf anderen geeigneten Plattformen in der Edge einsetzbar.
 
+### Virtueller Hands-on am 06.05.2021: Code-Beispiele für Colob
+
+1) MQTT-Bibliothek in Colab installieren
+
+```python
+!pip install paho-mqtt
+```
+
+2) Sensordaten per MQTT empfangen uns ausgeben
+
+```python
+import paho.mqtt.client as mqtt
+
+# MQTT broker connect callback function ...
+def on_connect(client, userdata, flags, rc):  
+    print("Connected with result code {0}".format(str(rc)))
+    client.subscribe("/xxx")
+
+# Message RX callback function ...
+def on_message(client, userdata, msg):
+    print("Message received-> " + msg.topic + " " + str(msg.payload))
+
+# Connect to the MQTT broker and receive messages forever ...
+client = mqtt.Client("ssv_mqtt_test")
+client.on_connect = on_connect
+client.on_message = on_message
+client.connect("test.mosquitto.org", 1883, 60)
+client.loop_forever()
+```
+
+3) Sensordaten per MQTT empfangen und in CSV-Datei speichern
+
+```python
+import paho.mqtt.client as mqtt 
+import pandas as pd
+import datetime
+import json
+
+# MQTT broker connect callback function ...
+def on_connect(client, userdata, flags, rc):  
+    file = open('/content/test.csv', 'w')
+    file.write("Timestamp;" + "Temperature;" + "Pressure;" + "Humidity" + '\n')
+    file.close()
+    print("Connected with result code {0}".format(str(rc)))
+    client.subscribe("/xxx")
+
+# Message RX callback function ...
+def on_message(client, userdata, msg):
+    
+    print("Message received-> " + msg.topic + " " + str(msg.payload))
+
+    data = json.loads(msg.payload)
+    data_ts = data['ts']
+    data_ts = pd.to_datetime(data_ts, unit='s') # ISO 8601 timestamp, GMT 
+    data_ts = data_ts.isoformat()
+    #data_ts = datetime.datetime.now()
+    #data_ts = data_ts.isoformat(timespec='seconds')
+    data_temp = round(data['ssvSensorBox']['temperature'],1)
+    data_pres = data['ssvSensorBox']['pressure'] * 10
+    data_pres = round(data_pres, 1)
+    data_hum = round(data['ssvSensorBox']['humidity'],1)
+
+    file = open('/content/test.csv', 'a')
+    file.write(str(data_ts) + ';' + str(data_temp) + ';' + str(data_pres) + ';' + str(data_hum) + '\n')
+    file.close() 
+
+# Connect to the MQTT broker and receive messages forever ...
+client = mqtt.Client("ssv_mqtt_test")
+client.on_connect = on_connect
+client.on_message = on_message
+client.connect("test.mosquitto.org", 1883, 60)
+client.loop_forever()
+```
+
+4) CSV-Datei mit Sensordaten auswerten
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+from datetime import datetime
+
+url = '/content/test.csv'
+
+csv=pd.read_csv(url, parse_dates=True, sep=';')
+csv["Timestamp"]=pd.to_datetime(csv["Timestamp"])  # ISO 8601 time stamp
+csv.index=csv["Timestamp"]
+del csv["Timestamp"]
+print(csv.head(10))
+print(':')
+print(csv.tail(10))
+print(' ')
+print(csv.describe())
+print(csv.isnull().sum().sum())
+
+csvRS = csv
+start_time_str = csv.index[0]
+start_time = str(start_time_str.strftime('%Y-%m-%d %H:%M'))
+end_time_str = csv.index[csv.shape[0]-1]
+end_time = str(end_time_str.strftime('%Y-%m-%d %H:%M'))
+
+fig, ax = plt.subplots(figsize=(12, 4))
+ax = plt.axes()
+ax.set(title="CSV Log from " + start_time + " to " + end_time)
+plt.plot(csvRS["Temperature"])
+#plt.plot(csvRS["Pressure"])
+#plt.plot(csvRS["Humidity"])
+plt.grid()
+plt.show()
+```
+
 <a href="https://github.com/kdw1000/Test/blob/master/_161120.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
