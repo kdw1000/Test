@@ -184,6 +184,61 @@ plt.plot(csvRS["Temperature"])
 plt.grid()
 plt.show()
 ```
+**5.1) Beispiel für ein TensorFlow-Regressionsmodell** 
+
+```python
+# TensorFlow regression model example ...
+
+import tensorflow as tf
+import numpy as np
+from tensorflow import keras
+
+x = np.array([-1.0, 0.0, 1.0, 2.0,  3.0,  4.0], dtype=float)
+y = np.array([-2.0, 1.0, 4.0, 7.0, 10.0, 13.0], dtype=float)
+
+model = tf.keras.Sequential([keras.layers.Dense(units=1, input_shape=[1])])
+
+model.compile(optimizer='sgd', loss='mean_squared_error')
+
+history = model.fit(x, y, epochs=400)
+
+# Save the Keras model to .h5 file ...
+model.save("my_model.h5")
+```
+
+**5.2) Lernkurve des Modells visualisieren** 
+
+```python
+# ... Show the training loss as diagram
+
+import matplotlib.pyplot as plt
+
+loss = history.history['loss']
+epochs = range(1, len(loss) + 1)
+
+plt.plot(epochs, loss, 'bo', label='Training loss')
+plt.title('Training loss')
+plt.show()
+```
+
+**5.3) Modellparameter ausgeben** 
+
+```python
+# ... Show more model details
+
+import tensorflow as tf
+import numpy as np
+from tensorflow import keras
+
+model = keras.models.load_model("my_model.h5")
+model.summary()
+```
+
+**5.4) x** 
+
+```python
+x
+```
 
 <a href="https://github.com/kdw1000/Test/blob/master/_161120.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
