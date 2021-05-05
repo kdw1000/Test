@@ -234,10 +234,77 @@ model = keras.models.load_model("my_model.h5")
 model.summary()
 ```
 
-**5.4) x** 
+**5.4) Modell unter TensorFlow für Vorhersagen nutzen** 
 
 ```python
-x
+# ... Load model file and predict something
+
+import tensorflow as tf
+import numpy as np
+from tensorflow import keras
+
+model = keras.models.load_model("my_model.h5")
+print(np.round(model.predict([3]), 1))
+```
+
+**5.5) Modell in TensorFlow Lite-Format konvertieren** 
+
+```python
+# TensorFlow Lite: Load model file and convert model to *.tflite ...
+
+import tensorflow as tf
+import numpy as np
+from tensorflow import keras
+
+model = keras.models.load_model("my_model.h5")
+
+# Convert the Keras model to .tflite file ...
+converter = tf.lite.TFLiteConverter.from_keras_model(model)
+#converter.optimizations = [tf.lite.Optimize.OPTIMIZE_FOR_SIZE]
+#converter.optimizations = [tf.lite.Optimize.DEFAULT]
+tflite_model = converter.convert()
+open('my_model.tflite', 'wb').write(tflite_model)
+```
+
+**5.6) TensorFlow Lite-Interpreter für Vorhersagen nutzen** 
+
+```python
+# TensorFlow Lite: load *.tflite model file and predict something ...
+
+import numpy as np
+import tensorflow as tf
+
+# Load TFLite model and allocate tensors.
+interpreter = tf.lite.Interpreter(model_path="my_model.tflite")
+interpreter.allocate_tensors()
+
+# Get input and output tensors.
+input_details = interpreter.get_input_details()
+output_details = interpreter.get_output_details()
+
+# Use model with input data.
+input_shape = input_details[0]['shape']
+input_data = np.array([[3.0]], dtype=np.float32)
+interpreter.set_tensor(input_details[0]['index'], input_data)
+
+interpreter.invoke()
+
+# The function `get_tensor()` returns a copy of the tensor data.
+# Use `tensor()` in order to get a pointer to the tensor.
+output_data = interpreter.get_tensor(output_details[0]['index'])
+print(np.round(output_data, 1))
+```
+
+**5.7) Testdaten für weitere Regressionsmodelle** 
+
+```python
+# More data to learn (y = mx + b)
+
+x = np.array([-1.0, 0.0, 1.0, 2.0, 3.0, 4.0,  5.0,  6.0], dtype=float)
+y = np.array([-0.5, 1.5, 3.5, 5.5, 7.5, 9.5, 11.5, 13.5], dtype=float)
+
+x = np.array([-1.0, 0.0,  1.0, 2.0,  3.0, 4.0,  5.0, 6.0], dtype=float)
+y = np.array([0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25, 2.5], dtype=float)
 ```
 
 <a href="https://github.com/kdw1000/Test/blob/master/_161120.ipynb">
