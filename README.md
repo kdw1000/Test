@@ -67,23 +67,15 @@ In dem Hands-on eines solchen Webinars geht es darum, den Teilnehmern unter fach
 
 Insofern werden die Sensordaten für die Übungen in Echtzeit an einen MQTT Broker im Internet übermittelt. Dort kann jeder Teilnehmer die Daten mit einem MQTT-Subscribe abonnieren und auf dem eigenen Rechner weiterbearbeiten. Dafür benötigt der Teilnehmer lediglich ein kostenloses Google-Konto mit einem Webbrowser-Zugang zu Google Colaboratory  (Colab). Die für die Übungen erforderlichen Python-Codebausteine werden jeweils vom SSV-Trainer zur Verfügung gestellt.
 
-### Was ist ein PyDSlog-Docker?
-
-Der Maschinensensor MLS/160A liefert ein relativ komplexes Datenbild mit verschiedenen Kanälen (bis zu sechs Achsen mit Beschleunigung und Winkelgeschwindigkeit) sowie einstellbarer Abtastfrequenz innerhalb eines definierbaren Zeitfensters. Als Zubehör ist nun ein MLS/160A-Support Docker verfügbar.
-
-![Node-RED-Flow](https://ssv-comm.de/forum/bilder/py_230421.png) 
-
-Mit diesen PyDSlog Docker wollen wir die Datenqualitätsanforderungen einer Machine-Learning-Applikation so präzise wie möglich umsetzen und Standardschnittstellen zu anderen Anwendungen schaffen. Der Docker unterstützt nicht nur die Sensorkonfiguration. Er dient auch zum sicheren Remote Update der MLS/160A-Firmware. Ein PyDSlog Docker ist auf einem SSV-Gateway und auf anderen geeigneten Plattformen in der Edge einsetzbar.
-
 ### Virtueller Hands-on am 06.05.2021: Code-Beispiele für Colob
 
-**1) MQTT-Bibliothek in Colab installieren**
+**1) MQTT-Bibliothek in Google-Colab installieren**
 
 ```python
 !pip install paho-mqtt
 ```
 
-**2) Sensordaten per MQTT empfangen uns ausgeben**
+**2) Sensordaten per MQTT empfangen und ausgeben**
 
 ```python
 import paho.mqtt.client as mqtt
@@ -105,7 +97,7 @@ client.connect("test.mosquitto.org", 1883, 60)
 client.loop_forever()
 ```
 
-**3) Sensordaten per MQTT empfangen und in CSV-Datei speichern**
+**3) Sensordaten per MQTT empfangen und in einer CSV-Datei speichern**
 
 ```python
 import paho.mqtt.client as mqtt 
@@ -149,7 +141,7 @@ client.connect("test.mosquitto.org", 1883, 60)
 client.loop_forever()
 ```
 
-**4) CSV-Datei mit Sensordaten auswerten**
+**4) CSV-Datei mit den Sensordaten auswerten**
 
 ```python
 import pandas as pd
@@ -306,6 +298,14 @@ y = np.array([-0.5, 1.5, 3.5, 5.5, 7.5, 9.5, 11.5, 13.5], dtype=float)
 x = np.array([-1.0, 0.0,  1.0, 2.0,  3.0, 4.0,  5.0, 6.0], dtype=float)
 y = np.array([0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25, 2.5], dtype=float)
 ```
+
+### Was ist ein PyDSlog-Docker?
+
+Der Maschinensensor MLS/160A liefert ein relativ komplexes Datenbild mit verschiedenen Kanälen (bis zu sechs Achsen mit Beschleunigung und Winkelgeschwindigkeit) sowie einstellbarer Abtastfrequenz innerhalb eines definierbaren Zeitfensters. Als Zubehör ist nun ein MLS/160A-Support Docker verfügbar.
+
+![Node-RED-Flow](https://ssv-comm.de/forum/bilder/py_230421.png) 
+
+Mit diesen PyDSlog Docker wollen wir die Datenqualitätsanforderungen einer Machine-Learning-Applikation so präzise wie möglich umsetzen und Standardschnittstellen zu anderen Anwendungen schaffen. Der Docker unterstützt nicht nur die Sensorkonfiguration. Er dient auch zum sicheren Remote Update der MLS/160A-Firmware. Ein PyDSlog Docker ist auf einem SSV-Gateway und auf anderen geeigneten Plattformen in der Edge einsetzbar.
 
 <a href="https://github.com/kdw1000/Test/blob/master/_161120.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
