@@ -109,6 +109,8 @@ Wie Sie eine Colab-Codezelle mit diesem Code zur Ausführung bringen, läuft der
 
 **3) Sensordaten per MQTT empfangen und in einer CSV-Datei speichern**
 
+Dieses Beispiel entspricht funktional dem Vorgänger *2) Sensordaten per MQTT empfangen und ausgeben*. Die per MQTT empfangenen Sensordaten werden allerdings nicht nur zeilenweise ausgegeben, sondern unter Colab auch in einer CSV-Datei gespeichert. Beachten Sie bitte, dass das auch hier die Client-ID „ssv_mqtt_test“ in der Codezeile `client = mqtt.Client("ssv_mqtt_test")` gegen eine andere Zeichenfolge Ihrer Wahl auszutauschen ist.
+
 ```python
 import paho.mqtt.client as mqtt 
 import pandas as pd
