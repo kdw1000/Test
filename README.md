@@ -73,12 +73,12 @@ Der Hands-on gehört zum Webinar "IoT-Funksensorik für Machine-Learning-Anwendu
 
 **1) MQTT-Bibliothek in Google-Colab installieren**
 
-Um unter Colab das MQTT-Protokoll zu nutzen, muss zunächst per pip eine MQTT-Bibliothek installiert werden. Führen Sie daher die folgende Codezeile aus:
+Um unter Colab das MQTT-Protokoll zu nutzen, muss zunächst per `pip` eine MQTT-Bibliothek installiert werden. Führen Sie daher die folgende Codezeile aus:
 
 ```python
 !pip install paho-mqtt
 ```
-Für Colab-Sitzungen gibt es ein Session-Timeout. Durch ein solches Timeout geht der Kontext einer Sitzung inkl. der per pip installierten Bibliotheken verloren. Insofern ist nach einem solchen Timeout die pip-Codezeile erneut auszuführen.      
+Für Colab-Sitzungen gibt es ein Session-Timeout. Durch ein solches Timeout geht der Kontext einer Sitzung inkl. der per `pip` installierten Bibliotheken verloren. Insofern ist nach einem solchen Timeout die `pip`-Codezeile erneut auszuführen.      
 
 **2) Sensordaten per MQTT empfangen und ausgeben**
 
