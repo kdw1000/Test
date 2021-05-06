@@ -152,7 +152,7 @@ client.on_message = on_message
 client.connect("test.mosquitto.org", 1883, 60)
 client.loop_forever()
 ```
-Um den aktuellen Inhalt der CSV-Datei auszugeben, reicht ein Mausklick auf das Dateisymbol am linken Bildschirmrand des Colab-Fensters. Dadurch entsteht rechts ein weiteres Fenster, indem Colab Ihnen die CSV-Daten anzeigt.
+Um den aktuellen Inhalt der CSV-Datei auszugeben, reicht ein Mausklick auf das Dateisymbol am linken Bildschirmrand des Colab-Fensters. Danach ist ein Doppelklick auf den Dateinamen *test.csv* erforderlich. Dadurch entsteht rechts ein weiteres Fenster, indem Colab Ihnen die CSV-Daten anzeigt.
 
 **4) CSV-Datei mit den Sensordaten auswerten**
 
