@@ -101,6 +101,7 @@ client.on_message = on_message
 client.connect("test.mosquitto.org", 1883, 60)
 client.loop_forever()
 ```
+Bitte unbedingt beachten: Jeder MQTT-Client, der sich mit einem MQTT-Broker verbindet, benötigt eine individuelle Client-ID. Tauschen Sie bitte den Text „ssv_mqtt_test“ in der Codezeile `client = mqtt.Client("ssv_mqtt_test")` gegen eine andere Zeichenfolge Ihrer Wahl aus. Ansonsten kann es sein, dass der Broker Ihren verbindungsaufbau ablehnt, weil zuvor schon jemand anders mit der gleichen ID eine Verbindung aufgebaut hat.
 
 **3) Sensordaten per MQTT empfangen und in einer CSV-Datei speichern**
 
