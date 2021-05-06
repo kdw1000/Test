@@ -156,6 +156,8 @@ Um den aktuellen Inhalt der CSV-Datei auszugeben, reicht ein Mausklick auf das D
 
 **4) CSV-Datei mit den Sensordaten auswerten**
 
+Die unter *3) Sensordaten per MQTT empfangen und in einer CSV-Datei speichern* erzeugte CSV-Datei *test.csv* lässt sich mit den folgenden Codezeilen auswerten und als Plot darstellen:
+
 ```python
 import pandas as pd
 import matplotlib.pyplot as plt
