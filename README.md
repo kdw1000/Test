@@ -82,6 +82,8 @@ Für Colab-Sitzungen gibt es ein Session-Timeout. Durch ein solches Timeout geht
 
 **2) Sensordaten per MQTT empfangen und ausgeben**
 
+Mit dem folgenden Codezeilen werden Sensordaten per MQTT empfangen und in Zeilenform ausgegeben. Die Daten werden während des Webinars vom einem Bluetooth-Funksensor an ein Edge-Gateway geschickt und von dort aus an den MQTT-Broker gesendet. 
+
 ```python
 import paho.mqtt.client as mqtt
 
@@ -101,7 +103,7 @@ client.on_message = on_message
 client.connect("test.mosquitto.org", 1883, 60)
 client.loop_forever()
 ```
-Bitte unbedingt beachten: Jeder MQTT-Client, der sich mit einem MQTT-Broker verbindet, benötigt eine individuelle Client-ID. Tauschen Sie bitte den Text „ssv_mqtt_test“ in der Codezeile `client = mqtt.Client("ssv_mqtt_test")` gegen eine andere Zeichenfolge Ihrer Wahl aus. Ansonsten kann es sein, dass der Broker Ihren verbindungsaufbau ablehnt, weil zuvor schon jemand anders mit der gleichen ID eine Verbindung aufgebaut hat.
+Bitte unbedingt beachten: Jeder MQTT-Client, der sich mit einem MQTT-Broker verbindet, benötigt eine individuelle Client-ID. Tauschen Sie bitte den Text „ssv_mqtt_test“ in der Codezeile `client = mqtt.Client("ssv_mqtt_test")` gegen eine andere Zeichenfolge Ihrer Wahl aus. Ansonsten kann es sein, dass der Broker Ihren MQTT-Verbindungsaufbau ablehnt, weil zuvor schon jemand anders mit der gleichen ID eine Verbindung aufgebaut hat.
 
 **3) Sensordaten per MQTT empfangen und in einer CSV-Datei speichern**
 
