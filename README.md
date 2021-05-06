@@ -195,9 +195,9 @@ Bitte beachten: Durch das Session-Timeout einer Colab-Sitzung geht im Colab-Date
 
 **5) TensorFlow-Modell erzeugen und für Vorhersagen nutzen**
 
-Die folgenden Colab-Codebausteine bilden so etwas wie ein „Hallo Welt!“ des Supervised Machine Learning mit TensorFlow. Es wird Modell für eine lineare Regression `y = mx + b` erzeugt und für Vorhersagen genutzt.  
+Die folgenden Colab-Codebausteine bilden so etwas wie ein „Hallo Welt!“ des Supervised Machine Learning mit TensorFlow. Es wird ein Modell für eine lineare Regression `y = mx + b` erzeugt und für Vorhersagen genutzt.  
 
-Ein Supervised Machine Learning-Lernalgorithmus soll in diesem Beispiel die Gewichtungen für ein Modell aus den zur Verfügung stehenden Trainingsdaten erlernen. Diese Gewichtungen beschreiben die Wahrscheinlichkeit, dass die Datenmuster, die das Modell aus den Daten erlernt (in unserem Beispiel `x = np.array([…])` und `y = np.array([…])`), die tatsächlichen Beziehungen in diesen Daten widerspiegeln. Mit diesem erlernten Modell kann man anschließend für einen x-Wert den jeweiligen y-Wert vorhersagen, wenn für `x` und `y` die gleichen Beziehungen wie für die Trainingsdaten gelten.  
+Ein Lernalgorithmus soll in diesem Beispiel die Gewichtungen für ein Modell aus den zur Verfügung stehenden Trainingsdaten erlernen. Diese Gewichtungen beschreiben die Wahrscheinlichkeit, dass die Datenmuster, die das Modell aus den Daten erlernt (in unserem Beispiel `x = np.array([…])` und `y = np.array([…])`), die tatsächlichen Beziehungen in diesen Daten widerspiegeln. Mit diesem erlernten Modell kann man anschließend für einen bisher unbekannten `x`-Wert den jeweiligen `y`-Wert vorhersagen, wenn für `x` und `y` die gleichen Beziehungen wie für die Trainingsdaten gelten.  
 
 **5.1) Beispiel für ein TensorFlow-Regressionsmodell** 
 
