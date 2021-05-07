@@ -1,4 +1,4 @@
-### Wie funktioniert SDU (Secure Device Update)?
+## Wie funktioniert SDU (Secure Device Update)?
 
 Eine SDU-Anwendung soll eine Komponente (Device) hinter dem RMG/941 über eine IoT-Anbindung mit Software-, Konfigurations- und Machine-Learning-Modell-Updates versorgen. Dabei liegt der Schwerpunkt, neben der Remote-Update-Funktion, im Bereich der IT-Sicherheit. Um eine dem Stand der Technik entsprechende Sicherheit zu gewährleisten, nutzt SDU eine Public-Key-Infrastruktur (PKI) für digitale Signaturen mit privaten und öffentlichen Schlüsseln, Zertifikaten und einer Sperrliste (Blacklist).
 
@@ -14,7 +14,7 @@ Der gesamte Update-Prozess wurde für den vollautomatischen Betrieb entwickelt u
 
 **Device:** Das eigentliche Zielsystem für den Update. Es ist per CAN, Modbus (RTU, TCP), Nahbereichs-Funkschnittstelle usw. mit dem RMG/941 verbunden. Über den RMG/941-SDU-Agent wurde das Gateway an das jeweilige Update-Protokoll der Device angepasst.
 
-### Wie extrahiert man Messwerte aus SSV/SFS-Daten?
+## Wie extrahiert man Messwerte aus SSV/SFS-Daten?
 
 Die Daten eines Smart Factory Sensors (SFS) werden vielfach als JSON-Objekt verschickt. Für die weitere Verarbeitung müssen die jeweils benötigten Daten aus diesen Objekten extrahiert werden. Der folgende Textblock zeigt als Beispiel das JSON-Objekt eines SFS mit drei Sensorelementen:
 
@@ -57,7 +57,7 @@ return [msg1, msg2, msg3];
 ```
 Der JavaScript-Code des Function Node extrahiert die Messwerte für Temperatur, Luftdruck und relative Luftfeuchte aus dem JSON-Objekt, begrenzt die Zahlenlänge auf eine Nachkommastelle und stellt die drei Sensormesswerte jeweils an einem eigenen Ausgang zur Verfügung. Dort übernimmt sie in diesem Beispiel ein Debug Node und erzeugt eine Messwertausgabe im Debug Sidebar.
 
-### Wie funktioniert der virtuelle Hands-on in einem SSV-Sensorik-Webinar?
+## Wie funktioniert der virtuelle Hands-on in einem SSV-Sensorik-Webinar?
 
 In diesen Webinaren lernen die Teilnehmer in der Regel unterschiedliche Sensordatenformate für Digitalisierungsaufgaben (z. B. JSON, CSV/TSV, Merkmalsvektoren) plus einige Erweiterungen (ISO 8601-Zeitstempel für Zeitreihendaten, Sensorfusion usw.) kennen. Aber auch die Sensordatenvorverarbeitung (z. B. Z-Score-Normalisierung, Detrending, FFT) und Datenanalysen per Machine Learning kommen zur Sprache.
 
