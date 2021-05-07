@@ -201,6 +201,8 @@ Ein Lernalgorithmus soll in diesem Beispiel die Gewichtungen für ein Modell aus
 
 **5.1) Beispiel für ein TensorFlow-Regressionsmodell** 
 
+Der hier folgende Code beinhaltet die Trainingsdaten `x = np.array([…])` und `y = np.array([…])` sowie die erforderlichen TensorFlow-Funktionsaufrufe zur Modellbildung. Durch die Codeausführung in einer Colab-Zelle wird die Datei *my_model.h5* im Colab-Dateibereich erzeugt. Diese Datei bildet das neue Modell.
+
 ```python
 # TensorFlow regression model example ...
 
@@ -310,7 +312,7 @@ output_data = interpreter.get_tensor(output_details[0]['index'])
 print(np.round(output_data, 1))
 ```
 
-**5.7) Testdaten für weitere Regressionsmodelle** 
+**5.7) Trainingsdaten für weitere Regressionsmodelle** 
 
 ```python
 # More data to learn (y = mx + b)
