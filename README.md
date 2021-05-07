@@ -242,7 +242,7 @@ plt.show()
 
 **5.3) Modellparameter ausgeben** 
 
-Das Machine Learning-Modell wird in unserem Beispiel durch ein künstliches neuronales Netzwerk mit je einem Eingang und Ausgang gebildet. Es gibt genau zwei „lernfähige“ Parameter: *m* und *b*. Die Detailinformationen zum neuronalen Netz lassen sich mit dem folgenden Code in Textform ausgeben:
+Das Machine Learning-Modell wird in unserem Beispiel durch ein künstliches neuronales Netzwerk mit je einem Eingang und Ausgang gebildet. Es gibt für die lineare Regression `y = mx + b` genau zwei „lernfähige“ Parameter: *m* und *b*. Die Detailinformationen zum neuronalen Netz lassen sich mit dem folgenden Code in Textform ausgeben:
 
 ```python
 # ... Show more model details
@@ -257,6 +257,8 @@ model.summary()
 
 **5.4) Modell unter TensorFlow für Vorhersagen nutzen** 
 
+Nachdem ein Machine-Learning-Modell vorliegt, lässt es sich für Vorhersagen nutzen (also, um für einen neuen x-Wert den jeweiligen y-Wert zu bestimmen. Der folgende Code bildet den erfoderlichen Inferenzbaustein:
+
 ```python
 # ... Load model file and predict something
 
@@ -267,6 +269,7 @@ from tensorflow import keras
 model = keras.models.load_model("my_model.h5")
 print(np.round(model.predict([3]), 1))
 ```
+Der neue x-Wert ist in diesem Beispiel die *3* in der letzten Codezeile `print(np.round(model.predict([3]), 1))`. Sie können hier auch andere Werte eintragen und die Codsezelle unter Colab immer wieder ausführen.
 
 **5.5) Modell in TensorFlow Lite-Format konvertieren** 
 
