@@ -107,7 +107,7 @@ client.loop_forever()
 
 Wie Sie eine Colab-Codezelle mit diesem Code zur Ausführung bringen, läuft der Code praktisch ‚für immer‘ in einer Endlosschleife (also auf jeden Fall bis zum nächsten Session-Timeout). Um die Ausführung zu beenden, benutzen Sie mit im Menü *Laufzeit* den Menüpunkt *Ausführung unterbrechen*.    
 
-**3) Sensordaten per MQTT empfangen und in einer CSV-Datei speichern**
+### 3) Sensordaten per MQTT empfangen und in einer CSV-Datei speichern
 
 Dieses Beispiel entspricht funktional dem Vorgänger *2) Sensordaten per MQTT empfangen und ausgeben*. Die per MQTT empfangenen Sensordaten werden allerdings nicht nur zeilenweise ausgegeben, sondern unter Colab auch in einer CSV-Datei gespeichert. Beachten Sie bitte, dass auch hier die Client-ID „ssv_mqtt_test“ in der Codezeile `client = mqtt.Client("ssv_mqtt_test")` gegen eine andere Zeichenfolge Ihrer Wahl auszutauschen ist.
 
@@ -154,7 +154,7 @@ client.loop_forever()
 ```
 Um den aktuellen Inhalt der CSV-Datei auszugeben, reicht ein Mausklick auf das Dateisymbol am linken Bildschirmrand des Colab-Fensters. Danach ist im Colab-Dateibereich ein Doppelklick auf den Dateinamen *test.csv* erforderlich. Dadurch entsteht rechts ein weiteres Fenster, indem Colab Ihnen die CSV-Daten anzeigt.
 
-**4) CSV-Datei mit den Sensordaten auswerten**
+### 4) CSV-Datei mit den Sensordaten auswerten
 
 Die unter *3) Sensordaten per MQTT empfangen und in einer CSV-Datei speichern* erzeugte CSV-Datei *test.csv* lässt sich mit den folgenden Codezeilen auswerten und als Plot darstellen:
 
@@ -193,13 +193,13 @@ plt.show()
 ```
 Bitte beachten: Durch das Session-Timeout einer Colab-Sitzung geht im Colab-Dateibereich auch die Datei *test.csv* verloren. 
 
-**5) TensorFlow-Modell erzeugen und für Vorhersagen nutzen**
+### 5) TensorFlow-Modell erzeugen und für Vorhersagen nutzen
 
 Die folgenden Colab-Codebausteine bilden so etwas wie ein „Hallo Welt!“ des Supervised Machine Learning mit TensorFlow. Es wird ein Modell für eine lineare Regression `y = mx + b` erzeugt und für Vorhersagen genutzt.  
 
 Ein Lernalgorithmus soll in diesem Beispiel die Gewichtungen für ein Modell aus den zur Verfügung stehenden Trainingsdaten erlernen. Diese Gewichtungen beschreiben die Wahrscheinlichkeit, dass die Datenmuster, die das Modell aus den Daten erlernt (in unserem Beispiel `x = np.array([…])` und `y = np.array([…])`), die tatsächlichen Beziehungen in diesen Daten widerspiegeln. Mit diesem erlernten Modell kann man anschließend für einen bisher unbekannten x-Wert den jeweiligen y-Wert vorhersagen, wenn für x und y die gleichen Beziehungen wie für die Trainingsdaten gelten.  
 
-**5.1) Beispiel für ein TensorFlow-Regressionsmodell** 
+### 5.1) Beispiel für ein TensorFlow-Regressionsmodell 
 
 Der hier folgende Code beinhaltet die Trainingsdaten `x = np.array([…])` und `y = np.array([…])` sowie die erforderlichen TensorFlow-Funktionsaufrufe zur Modellbildung. Durch die Codeausführung in einer Colab-Zelle wird die Datei *my_model.h5* im Colab-Dateibereich erzeugt. Diese Datei bildet das neue Modell.
 
@@ -223,7 +223,7 @@ history = model.fit(x, y, epochs=400)
 model.save("my_model.h5")
 ```
 
-**5.2) Lernkurve des Modells visualisieren** 
+### 5.2) Lernkurve des Modells visualisieren 
 
 Der eigentliche Lernvorgang zur Modellbildung einer Supervised Machine Learning-Anwendung erfolgt in einer Trainingsschleife. Dabei entstehen TensorFlow und Keras interne Daten zum Verlauf der Lernkurve (Training loss). Der folgende Code bewirkt die Darstellung eines Diagramms mit dem *Training loss*. 
 
@@ -240,7 +240,7 @@ plt.title('Training loss')
 plt.show()
 ```
 
-**5.3) Modellparameter ausgeben** 
+### 5.3) Modellparameter ausgeben
 
 Das Machine Learning-Modell wird in unserem Beispiel durch ein künstliches neuronales Netzwerk mit je einem Eingang und Ausgang gebildet. Es gibt für die lineare Regression `y = mx + b` genau zwei „lernfähige“ Parameter: *m* und *b*. Die Detailinformationen zum neuronalen Netz lassen sich mit dem folgenden Code in Textform ausgeben:
 
@@ -255,7 +255,7 @@ model = keras.models.load_model("my_model.h5")
 model.summary()
 ```
 
-**5.4) Modell unter TensorFlow für Vorhersagen nutzen** 
+### 5.4) Modell unter TensorFlow für Vorhersagen nutzen 
 
 Nachdem ein Machine-Learning-Modell vorliegt, lässt es sich für Vorhersagen nutzen (also, um für einen neuen x-Wert den jeweiligen y-Wert zu bestimmen. Der folgende Code bildet den erfoderlichen Inferenzbaustein:
 
@@ -271,7 +271,7 @@ print(np.round(model.predict([3]), 1))
 ```
 Der neue x-Wert ist in diesem Beispiel die *3* in der letzten Codezeile `print(np.round(model.predict([3]), 1))`. Sie können hier auch andere Werte eintragen und die Codsezelle unter Colab immer wieder ausführen.
 
-**5.5) Modell in TensorFlow Lite-Format konvertieren** 
+### 5.5) Modell in TensorFlow Lite-Format konvertieren 
 
 Um ein TensorFlow-Modell für die Inferenz in einer OT-Umgebung zu nutzen, ist auf dem Zielsystem auch eine vollständige TensorFlow-Laufzeitumgebung erforderlich. Falls Ihre OT-Hardware dafür nicht die erforderlichen Ressourcen bietet, können Sie das Modell in ein TensorFlow Lite-Modell umwandeln. Der folgende Code führt diese Umwandlung aus: Die Datei *my_model.h5* wird TensorFlow Lite-Modell mit dem Namen *my_model.tflite* konvertiert.
 
@@ -292,7 +292,7 @@ tflite_model = converter.convert()
 open('my_model.tflite', 'wb').write(tflite_model)
 ```
 
-**5.6) TensorFlow Lite-Interpreter für Vorhersagen nutzen** 
+### 5.6) TensorFlow Lite-Interpreter für Vorhersagen nutzen 
 
 Eine Inferenzmaschine, die TensorFlow Lite-Modelle nutzt (also z. B. Dateien im *tflite*-Format), benötigt einen sogenannten Interpreter. Der hier folgende Code dient als Beispiel für einen solchen TensorFlow Lite-Interpreter.
 
@@ -323,7 +323,7 @@ output_data = interpreter.get_tensor(output_details[0]['index'])
 print(np.round(output_data, 1))
 ```
 
-**5.7) Trainingsdaten für weitere Regressionsmodelle** 
+### 5.7) Trainingsdaten für weitere Regressionsmodelle 
 
 Die Trainingsdaten `x = np.array([…])` und `y = np.array([…])` unter *5.1 Beispiel für ein TensorFlow-Regressionsmodell* können Sie gegen eines der beiden folgenden Beispiele austauschen, um anschließend ein neues TensorFlow-Modell zu erzeugen.
 
@@ -337,7 +337,7 @@ x = np.array([-1.0, 0.0,  1.0, 2.0,  3.0, 4.0,  5.0, 6.0], dtype=float)
 y = np.array([0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25, 2.5], dtype=float)
 ```
 
-### Was ist ein PyDSlog-Docker?
+## Was ist ein PyDSlog-Docker?
 
 Der Maschinensensor MLS/160A liefert ein relativ komplexes Datenbild mit verschiedenen Kanälen (bis zu sechs Achsen mit Beschleunigung und Winkelgeschwindigkeit) sowie einstellbarer Abtastfrequenz innerhalb eines definierbaren Zeitfensters. Als Zubehör ist nun ein MLS/160A-Support Docker verfügbar.
 
