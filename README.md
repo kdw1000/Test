@@ -67,7 +67,7 @@ In dem Hands-on eines solchen Webinars geht es darum, den Teilnehmern unter fach
 
 Insofern werden die Sensordaten für die Übungen in Echtzeit an einen MQTT Broker im Internet übermittelt. Dort kann jeder Teilnehmer die Daten mit einem MQTT-Subscribe abonnieren und auf dem eigenen Rechner weiterbearbeiten. Dafür benötigt der Teilnehmer lediglich ein kostenloses Google-Konto mit einem Webbrowser-Zugang zu Google Colaboratory  (Colab). Die für die Übungen erforderlichen Python-Codebausteine werden jeweils vom SSV-Trainer zur Verfügung gestellt.
 
-### Virtueller Hands-on am 06.05.2021: Code-Beispiele für Colob
+### Virtueller Hands-on am 06.05.2021: Code-Beispiele für Colab
 
 Der Hands-on gehört zum Webinar "IoT-Funksensorik für Machine-Learning-Anwendungen". Die Teilnehmer können per Colab live MQTT-Sensordaten empfangen, anzeigen, in einer Zeitreihen-CSV-Datei speichern und visualisieren. Des Weiteren wird ein einfaches Regressionsmodell per TensorFlow erzeugt.  
 
@@ -103,7 +103,7 @@ client.on_message = on_message
 client.connect("test.mosquitto.org", 1883, 60)
 client.loop_forever()
 ```
-Bitte unbedingt beachten: Jeder MQTT-Client, der sich mit einem MQTT-Broker verbindet, benötigt eine individuelle Client-ID. Tauschen Sie bitte den Text „ssv_mqtt_test“ in der Codezeile `client = mqtt.Client("ssv_mqtt_test")` gegen eine andere Zeichenfolge Ihrer Wahl aus. Ansonsten kann es sein, dass der Broker Ihren MQTT-Verbindungsaufbau ablehnt, weil zuvor schon jemand anders mit der gleichen ID eine Verbindung aufgebaut hat.
+**Bitte unbedingt beachten:** Jeder MQTT-Client, der sich mit einem MQTT-Broker verbindet, benötigt eine individuelle Client-ID. Tauschen Sie bitte den Text „ssv_mqtt_test“ in der Codezeile `client = mqtt.Client("ssv_mqtt_test")` gegen eine andere Zeichenfolge Ihrer Wahl aus. Ansonsten kann es sein, dass der Broker Ihren MQTT-Verbindungsaufbau ablehnt, weil zuvor schon jemand anders mit der gleichen ID eine Verbindung aufgebaut hat.
 
 Wie Sie eine Colab-Codezelle mit diesem Code zur Ausführung bringen, läuft der Code praktisch ‚für immer‘ in einer Endlosschleife (also auf jeden Fall bis zum nächsten Session-Timeout). Um die Ausführung zu beenden, benutzen Sie mit im Menü *Laufzeit* den Menüpunkt *Ausführung unterbrechen*.    
 
