@@ -71,7 +71,7 @@ Insofern werden die Sensordaten für die Übungen in Echtzeit an einen MQTT Brok
 
 Der Hands-on gehört zum Webinar "IoT-Funksensorik für Machine-Learning-Anwendungen". Die Teilnehmer können per Colab live MQTT-Sensordaten empfangen, anzeigen, in einer Zeitreihen-CSV-Datei speichern und visualisieren. Des Weiteren wird ein einfaches Regressionsmodell per TensorFlow erzeugt.  
 
-# 1) MQTT-Bibliothek in Google-Colab installieren #
+#### 1) MQTT-Bibliothek in Google-Colab installieren ####
 
 Um unter Colab das MQTT-Protokoll zu nutzen, muss zunächst per `pip` eine MQTT-Bibliothek installiert werden. Führen Sie daher die folgende Codezeile aus:
 
@@ -80,7 +80,7 @@ Um unter Colab das MQTT-Protokoll zu nutzen, muss zunächst per `pip` eine MQTT-
 ```
 Für Colab-Sitzungen gibt es ein Session-Timeout. Durch ein solches Timeout geht der Kontext einer Sitzung inkl. der per `pip` installierten Bibliotheken verloren. Insofern ist nach einem solchen Timeout die `pip`-Codezeile erneut auszuführen.      
 
-# 2) Sensordaten per MQTT empfangen und ausgeben #
+#### 2) Sensordaten per MQTT empfangen und ausgeben ####
 
 Mit den folgenden Codezeilen werden Sensordaten direkt in Colab per MQTT empfangen und in Zeilenform ausgegeben. Die Daten werden während des Webinars vom einem Bluetooth-Funksensor an ein Edge-Gateway geschickt und von dort aus an den MQTT-Broker gesendet. 
 
