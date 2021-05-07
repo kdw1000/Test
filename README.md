@@ -225,6 +225,8 @@ model.save("my_model.h5")
 
 **5.2) Lernkurve des Modells visualisieren** 
 
+Der eigentliche Lernvorgang zur Modellbildung einer Supervised Machine Learning-Anwendung erfolgt in einer Trainingsschleife. Dabei entstehen Daten zum Verlauf der Lernkurve (Training loss). Der folgende Code bewirkt die Darstellung eines Diagramms mit dem *Training loss*. 
+
 ```python
 # ... Show the training loss as diagram
 
