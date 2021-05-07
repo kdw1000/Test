@@ -266,6 +266,8 @@ print(np.round(model.predict([3]), 1))
 
 **5.5) Modell in TensorFlow Lite-Format konvertieren** 
 
+Um ein TensorFlow-Modell für die Inferenz in einer OT-Umgebung zu nutzen, ist auf dem Zielsystem auch eine vollständige TensorFlow-Laufzeitumgebung erforderlich. Falls Ihre OT-Hardware dafür nicht die erforderlichen Ressourcen bietet, können Sie das Modell in ein TensorFlow Lite-Modell umwandeln. Der folgende Code führt diese Umwandlung aus: Die Datei *my_model.h5* wird TensorFlow Lite-Modell mit dem Namen *my_model.tflite* konvertiert.
+
 ```python
 # TensorFlow Lite: Load model file and convert model to *.tflite ...
 
@@ -284,6 +286,8 @@ open('my_model.tflite', 'wb').write(tflite_model)
 ```
 
 **5.6) TensorFlow Lite-Interpreter für Vorhersagen nutzen** 
+
+Eine Inferenzmaschine, die TensorFlow Lite-Modelle nutzt (also z. B. Dateien im *tflite*-Format), benötigt einen sogenannten Interpreter. Der hier folgende Code dient als Beispiel für einen solchen TensorFlow Lite-Interpreter.
 
 ```python
 # TensorFlow Lite: load *.tflite model file and predict something ...
@@ -313,6 +317,8 @@ print(np.round(output_data, 1))
 ```
 
 **5.7) Trainingsdaten für weitere Regressionsmodelle** 
+
+Die Trainingsdaten `x = np.array([…])` und `y = np.array([…])` unter *5.1 Beispiel für ein TensorFlow-Regressionsmodell* können Sie gegen eines der beiden folgenden Beispiele austauschen, um anschließend ein neues TensorFlow-Modell zu erzeugen.
 
 ```python
 # More data to learn (y = mx + b)
