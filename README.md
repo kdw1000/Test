@@ -67,7 +67,7 @@ In dem Hands-on eines solchen Webinars geht es darum, den Teilnehmern unter fach
 
 Insofern werden die Sensordaten für die Übungen in Echtzeit an einen MQTT Broker im Internet übermittelt. Dort kann jeder Teilnehmer die Daten mit einem MQTT-Subscribe abonnieren und auf dem eigenen Rechner weiterbearbeiten. Dafür benötigt der Teilnehmer lediglich ein kostenloses Google-Konto mit einem Webbrowser-Zugang zu Google Colaboratory  (Colab). Die für die Übungen erforderlichen Python-Codebausteine werden jeweils vom SSV-Trainer zur Verfügung gestellt.
 
-## Virtueller Hands-on am 06.05.2021: Code-Beispiele für Colab
+## Virtueller Hands-on am 25.06.2021: Code-Beispiele für Colab
 
 Der Hands-on gehört zum Webinar "IoT-Funksensorik für Machine-Learning-Anwendungen". Die Teilnehmer können per Colab live MQTT-Sensordaten empfangen, anzeigen, in einer Zeitreihen-CSV-Datei speichern und visualisieren. Des Weiteren wird ein einfaches Regressionsmodell per TensorFlow erzeugt.  
 
