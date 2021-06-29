@@ -337,6 +337,66 @@ x = np.array([-1.0, 0.0,  1.0, 2.0,  3.0, 4.0,  5.0, 6.0], dtype=float)
 y = np.array([0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25, 2.5], dtype=float)
 ```
 
+### 5.8) Embedded in eine HMTM-Seite per TensorFlow.js 
+
+Die ...
+
+```html
+<html>
+   <head>
+      <title>TensorFlow Regression</title>
+      <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.6.1"></script>
+      <script>
+         var tfinterface;
+         const model = tf.sequential();
+             
+         function initTF() {
+         
+         // 1. Training data
+               // y = 10x
+               //const xs = tf.tensor2d([1,2,3,4,5,6,7,8,9], [9,1]);
+               //const ys = tf.tensor2d([10,20,30,40,50,60,70,80,90], [9,1]);
+         
+               // y = 3x + 1
+               const xs = tf.tensor2d([-1.0, 0.0, 1.0, 2.0,  3.0,  4.0], [6,1])
+               const ys = tf.tensor2d([-2.0, 1.0, 4.0, 7.0, 10.0, 13.0], [6,1])
+      
+         // 2. Build linear regression model
+               model.add(tf.layers.dense({units: 1, inputShape: [1]}));
+               model.compile({loss: 'meanSquaredError', optimizer: 'sgd'}); 
+               tfinterface=model.fit(xs,ys,{epochs: 400});
+         }
+         
+         // 3. Prediction wrapper
+         function predict(n) {
+               return tfinterface.then(()=> { return model.predict(tf.tensor2d([n],[1,1])); });
+         }
+         
+         // Helper for HTML form
+         function formpredict(v,r) {
+            predict(v).then(function(res) {
+            r.innerHTML=res.get([0]);
+            });  
+         }
+         
+            
+      </script>      
+   </head>  
+   <body onLoad='initTF();'>
+      <p>
+      <div id='res'>Wait</div>
+      <p>
+      <form name='iForm' onSubmit='formpredict(this.val.value,document.getElementById("res")); return false;')>
+         <script>
+            document.getElementById("res").innerHTML="&nbsp;";
+                 
+         </script>
+         Input Number: <input name='val'><input type=submit>
+      </form>
+   </body>
+</html>
+```
+
 ## Was ist ein PyDSlog-Docker?
 
 Der Maschinensensor MLS/160A liefert ein relativ komplexes Datenbild mit verschiedenen Kanälen (bis zu sechs Achsen mit Beschleunigung und Winkelgeschwindigkeit) sowie einstellbarer Abtastfrequenz innerhalb eines definierbaren Zeitfensters. Als Zubehör ist nun ein MLS/160A-Support Docker verfügbar.
