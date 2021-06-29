@@ -339,7 +339,7 @@ y = np.array([0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25, 2.5], dtype=float)
 
 ### 5.8) Embedded in eine HMTM-Seite per TensorFlow.js 
 
-Das gesamte Beispiel inklusive der Trainingsdaten und der Modellbildung lässt sich mit Hilfe von tensorFLow.js auch direkt in eine HMTL-Seite einbetten.
+Das gesamte Beispiel inklusive der Trainingsdaten und der Modellbildung lässt sich mit Hilfe von TensorFLow.js auch direkt in eine HMTL-Seite einbetten.
 
 ```html
 <html>
