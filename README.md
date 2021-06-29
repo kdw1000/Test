@@ -339,7 +339,7 @@ y = np.array([0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25, 2.5], dtype=float)
 
 ### 5.8) Embedded in eine HMTM-Seite per TensorFlow.js 
 
-Die ...
+Das gesamte Beispiel inklusive der Trainingsdaten und der Modellbildung lässt sich mit Hilfe von tensorFLow.js auch direkt in eine HMTL-Seite einbetten.
 
 ```html
 <html>
@@ -378,8 +378,6 @@ Die ...
             r.innerHTML=res.get([0]);
             });  
          }
-         
-            
       </script>      
    </head>  
    <body onLoad='initTF();'>
@@ -388,8 +386,7 @@ Die ...
       <p>
       <form name='iForm' onSubmit='formpredict(this.val.value,document.getElementById("res")); return false;')>
          <script>
-            document.getElementById("res").innerHTML="&nbsp;";
-                 
+            document.getElementById("res").innerHTML="&nbsp;";      
          </script>
          Input Number: <input name='val'><input type=submit>
       </form>
