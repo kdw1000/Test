@@ -325,10 +325,10 @@ print(np.round(output_data, 1))
 
 ### 5.7) TensorFlow Lite-Interpreter für Embedded Systeme mit Python 
 
-Eine Inferenzmaschine für TensorFlow Lite-Modelle lässt sich auch auf Embedded Systemen realisieren, die Python unterstützen. Es ist in diesem Fall keine vollständige TensorFlow-Installation auf dem Zielsystem erforderlich. Eine relativ schlanke Python3-Laufzeitumgebung mit Numpy-Erweiterung und einem TensorFlow-Lite-Interpreter reicht bereits aus.   
+Eine Inferenzmaschine für TensorFlow Lite-Modelle lässt sich auch auf Embedded Systemen realisieren, die Python unterstützen. Es ist in diesem Fall keine vollständige TensorFlow-Installation auf dem Zielsystem erforderlich. Eine relativ schlanke Python3-Laufzeitumgebung mit Numpy-Erweiterung und einem TensorFlow-Lite-Interpreter reicht bereits aus. Der Interpreter-Code sieht in diesem Fall etwas anders aus:     
 
 ```python
-# TensorFlow Lite: load model file from /tmp/ and predict something
+# TensorFlow Lite: load model file from /tmp/ and predict something ...
 
 import numpy as np
 import tflite_runtime.interpreter as tflite
