@@ -323,7 +323,37 @@ output_data = interpreter.get_tensor(output_details[0]['index'])
 print(np.round(output_data, 1))
 ```
 
-### 5.7) Trainingsdaten für weitere Regressionsmodelle 
+### 5.7) TensorFlow Lite-Interpreter für Embedded Systeme mit Python 
+
+Eine Inferenzmaschine für TensorFlow Lite-Modelle lässt sich auch auf Embedded Systemen realisieren, die Python unterstützen. Es ist in diesem Fall keine vollständige TensorFlow-Installation auf dem Zielsystem erforderlich. Eine relativ schlanke Python3-Laufzeitumgebung mit Numpy-Erweiterung und einem TensorFlow-Lite-Interpreter reicht bereits aus.   
+
+```python
+# TensorFlow Lite: load model file and predict something
+
+import numpy as np
+import tflite_runtime.interpreter as tflite
+
+# Load TFLite model and allocate tensors.
+interpreter = tflite.Interpreter(model_path="/tmp/my_model.tflite")
+interpreter.allocate_tensors()
+
+# Get input and output tensors.
+input_details = interpreter.get_input_details()
+output_details = interpreter.get_output_details()
+
+# Use model with input data.
+input_shape = input_details[0]['shape']
+input_data = np.array([[-5.6]], dtype=np.float32) 
+interpreter.set_tensor(input_details[0]['index'], input_data)  
+
+interpreter.invoke()
+
+# The function 'get_tensor()' returns a copy of the tensor data.
+# Use 'tensor()' in order to get a pointer to the tensor.
+output_data = interpreter.get_tensor(output_details[0]['index'])
+print(np.round(output_data, 2))
+
+### 5.8) Trainingsdaten für weitere Regressionsmodelle 
 
 Die Trainingsdaten `x = np.array([…])` und `y = np.array([…])` unter *5.1 Beispiel für ein TensorFlow-Regressionsmodell* können Sie gegen eines der beiden folgenden Beispiele austauschen, um anschließend ein neues TensorFlow-Modell zu erzeugen.
 
@@ -337,7 +367,7 @@ x = np.array([-1.0, 0.0,  1.0, 2.0,  3.0, 4.0,  5.0, 6.0], dtype=float)
 y = np.array([0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25, 2.5], dtype=float)
 ```
 
-### 5.8) Embedded in eine HMTM-Seite per TensorFlow.js 
+### 5.9) Embedded in eine HMTM-Seite per TensorFlow.js 
 
 Das gesamte Beispiel inklusive der Trainingsdaten und der Modellbildung lässt sich mit Hilfe von TensorFlow.js auch direkt in eine HMTL-Seite einbetten.
 
