@@ -328,7 +328,7 @@ print(np.round(output_data, 1))
 Eine Inferenzmaschine für TensorFlow Lite-Modelle lässt sich auch auf Embedded Systemen realisieren, die Python unterstützen. Es ist in diesem Fall keine vollständige TensorFlow-Installation auf dem Zielsystem erforderlich. Eine relativ schlanke Python3-Laufzeitumgebung mit Numpy-Erweiterung und einem TensorFlow-Lite-Interpreter reicht bereits aus.   
 
 ```python
-# TensorFlow Lite: load model file and predict something
+# TensorFlow Lite: load model file from /tmp/ and predict something
 
 import numpy as np
 import tflite_runtime.interpreter as tflite
@@ -352,6 +352,7 @@ interpreter.invoke()
 # Use 'tensor()' in order to get a pointer to the tensor.
 output_data = interpreter.get_tensor(output_details[0]['index'])
 print(np.round(output_data, 2))
+```
 
 ### 5.8) Trainingsdaten für weitere Regressionsmodelle 
 
